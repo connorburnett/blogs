@@ -3,12 +3,13 @@
     <div>
       <router-link :to="{name: 'Home'}">Home</router-link>
       <router-link :to="{name: 'Blogs'}">Blogs</router-link>
+      <router-link :to="{name: 'Create'}">Create</router-link>
     </div>
     <hr>
     <router-view></router-view>
     <hr>
     <footer>
-      WICKA WICKA WHUUUUUT
+      The World Will End On July 27, 2109
     </footer>
   </div>
 </template>
