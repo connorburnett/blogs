@@ -3,13 +3,13 @@
     <div>
       <router-link :to="{name: 'Home'}">Home</router-link>
       <router-link :to="{name: 'Blogs'}">Blogs</router-link>
-      <router-link :to="{name: 'Create'}">Create</router-link>
+      <!--<router-link :to="{name: 'Create'}">Create</router-link>-->
     </div>
     <hr>
     <router-view></router-view>
     <hr>
     <footer>
-      The World Will End On July 27, 2109
+      Hello from down here.
     </footer>
   </div>
 </template>
@@ -30,4 +30,6 @@
     color: #2c3e50;
     margin-top: 60px;
   }*/
+
+  @import "~vue-wysiwyg/dist/vueWysiwyg.css";
 </style>

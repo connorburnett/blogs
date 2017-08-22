@@ -1,37 +1,62 @@
 <template>
-  <div>
-    <h1>Blogs VUE</h1>
+  <div class="create">
+    <form @submit.prevent="createBlog()">
+      <input type="text" v-model="blog.title" placeholder="Title">
+      <wysiwyg v-model="blog.body" />
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!--<div>
+    <h1>Blogs in VUE</h1>
+
+    <wysiwyg v-model="createdBlog.body" />
+
+    <div>
+      <button @click="createBlog">Create New Blog</button>
+    </div>
 
     <ul>
       <li v-for="blog in blogs">
-        <router-link :to="{name: 'Blog', params: { blogTitle: blog.title } }">{{blog.body}}</router-link>
+        <router-link :to="{name: 'Blog', params: { blogTitle:  blog.title, blogBody: blog.body } }">{{blog.title}}</router-link>
       </li>
     </ul>
 
-  </div>
+  </div>-->
 </template>
 
 <script>
   export default {
-    data(){
+    name: 'blog',
+    data() {
       return {
-        blogs:[{
-          title: 'dsjkaf903j',
-          body: 'My mom took away my phone cause she thought I was selling drugs so now all I have is my burner phone'
-        },{
-          title: 'dsfkj90322930',
-          body: 'Nippon is best country, Evangelion is best anime'
-        }]
+        blog: {
+          title: '',
+          body: ''
+        }
       }
     },
-    beforeCreate(){
-      console.log("WHAT IS THIS?", this.name)
+    computed: {
+      blogs() {
+        return this.$store.state.blogs
+      }
     },
-    mounted(){
-      console.log('ABOUT IS READY')
-      console.log("WHAT IS THIS?", this.name)
+    // beforeCreate() {
+    //   //store.getBlogs();
+    // },
+
+    methods: {
+      createBlog() {
+        this.$store.dispatch("createBlog", this.blog)
+      }
+    },
+
+    mounted() {
+      this.$store.dispatch('getBlogs')
     }
+
   }
+
 </script>
 
 <style></style>
